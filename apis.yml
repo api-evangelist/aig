@@ -1,7 +1,11 @@
 aid: aig
-url: https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.aig.com
+description: >-
+  American International Group, Inc, (AIG), is a global insurance organization providing
+  a range of insurance and other financial services. Get to know us better.
