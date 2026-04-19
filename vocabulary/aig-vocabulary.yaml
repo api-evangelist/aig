@@ -1,0 +1,130 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "AIG"
+  description: "Taxonomy for AIG insurance services covering policies, claims, risk profiles, and cyber risk underwriting data."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: aig-insurance
+      version: "N/A"
+      baseUrl: https://www.aig.com
+      status: active
+      note: "AIG does not currently offer a public developer API. This profile documents insurance data schemas and portal integrations."
+
+  resources:
+    - name: InsurancePolicy
+      apis: [aig-insurance]
+      actions: [issue, renew, endorse, cancel]
+      description: "Insurance policy covering specified risks with premium and coverage details"
+    - name: InsuranceClaim
+      apis: [aig-insurance]
+      actions: [report, investigate, settle, close]
+      description: "Insurance claim filed for covered loss events"
+    - name: RiskProfile
+      apis: [aig-insurance]
+      actions: [assess, update, underwrite]
+      description: "Risk assessment profile for insurance underwriting"
+    - name: CyberRiskProfile
+      apis: [aig-insurance]
+      actions: [assess, score, underwrite]
+      description: "Cyber risk profile for cyber insurance underwriting"
+
+  actions:
+    - name: issue
+      pattern: write
+      description: "Issue a new insurance policy"
+    - name: renew
+      pattern: write
+      description: "Renew an existing policy"
+    - name: report
+      pattern: write
+      description: "Report a new insurance claim"
+    - name: assess
+      pattern: read
+      description: "Assess risk for underwriting"
+    - name: settle
+      pattern: write
+      description: "Settle an insurance claim"
+
+  schemas:
+    commercial:
+      - name: InsurancePolicy
+        description: "Commercial insurance policy record"
+        keyFields: [policy_number, policy_type, insured_name, effective_date, premium, coverage_limit]
+      - name: InsuranceClaim
+        description: "Insurance claim with loss details"
+        keyFields: [claim_number, policy_number, loss_date, loss_amount, claim_status]
+      - name: RiskProfile
+        description: "Enterprise risk assessment profile"
+        keyFields: [entity_name, industry, naics_code, annual_revenue, employee_count]
+    cyber:
+      - name: CyberRiskProfile
+        description: "Cyber risk underwriting profile"
+        keyFields: [organization_name, mfa_enabled, endpoint_protection, prior_breaches]
+
+  enums:
+    policyStatus:
+      - Active
+      - Expired
+      - Cancelled
+      - Pending
+      - Renewed
+    claimStatus:
+      - Reported
+      - Under Investigation
+      - Pending Settlement
+      - Settled
+      - Closed
+      - Denied
+    insuranceLines:
+      - Commercial General Liability
+      - Property
+      - Cyber
+      - Directors and Officers
+      - Professional Liability
+      - Workers Compensation
+      - Travel
+      - Specialty
+
+  authentication:
+    schemes:
+      - type: portal
+        description: "myAIG broker portal login with username/password and MFA"
+
+capability:
+  workflows:
+    - name: "Insurance Policy and Claims Management"
+      description: "Manage insurance policies, file claims, and track settlement status for commercial and personal lines"
+      personas: [Insurance Broker, Risk Manager, Claims Adjuster]
+      domains: [Commercial Insurance, Claims]
+
+  personas:
+    - id: broker
+      name: "Insurance Broker"
+      description: "Insurance broker accessing policies and endorsements through myAIG portal"
+    - id: risk-manager
+      name: "Risk Manager"
+      description: "Corporate risk manager overseeing insurance programs and claims activity"
+    - id: claims-adjuster
+      name: "Claims Adjuster"
+      description: "AIG claims professional handling investigation and settlement"
+
+  domains:
+    - name: "Commercial Insurance"
+      resources: [InsurancePolicy, RiskProfile, CyberRiskProfile]
+    - name: "Claims"
+      resources: [InsuranceClaim]
+
+crossReference:
+  - resource: InsurancePolicy
+    operations: [issue, renew, endorse, cancel]
+    personas: [Insurance Broker, Risk Manager]
+  - resource: InsuranceClaim
+    operations: [report, investigate, settle]
+    personas: [Claims Adjuster, Risk Manager]
+  - resource: CyberRiskProfile
+    operations: [assess, underwrite]
+    personas: [Risk Manager]

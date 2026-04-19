@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/json-schema/aig-cyber-risk-profile-schema.json",
+  "title": "CyberRiskProfile",
+  "description": "Cyber risk profile for cyber insurance underwriting",
+  "type": "object",
+  "properties": {
+    "organization_name": {
+      "type": "string",
+      "description": "Organization name",
+      "example": "TechCorp Inc"
+    },
+    "annual_revenue": {
+      "type": "number",
+      "description": "Annual revenue in USD",
+      "example": 10000000.0
+    },
+    "employee_count": {
+      "type": "integer",
+      "description": "Number of employees",
+      "example": 200
+    },
+    "data_records_count": {
+      "type": "integer",
+      "description": "Number of personal data records held",
+      "example": 100000
+    },
+    "mfa_enabled": {
+      "type": "boolean",
+      "description": "Multi-factor authentication enabled",
+      "example": true
+    },
+    "endpoint_protection": {
+      "type": "boolean",
+      "description": "Endpoint protection solution deployed",
+      "example": true
+    },
+    "backup_frequency": {
+      "type": "string",
+      "description": "Data backup frequency",
+      "example": "Daily"
+    },
+    "incident_response_plan": {
+      "type": "boolean",
+      "description": "Incident response plan in place",
+      "example": true
+    },
+    "prior_breaches": {
+      "type": "integer",
+      "description": "Number of prior data breaches",
+      "example": 0
+    }
+  }
+}

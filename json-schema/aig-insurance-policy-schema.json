@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/json-schema/aig-insurance-policy-schema.json",
+  "title": "InsurancePolicy",
+  "description": "An AIG insurance policy covering insured risks",
+  "type": "object",
+  "properties": {
+    "policy_number": {
+      "type": "string",
+      "description": "Unique policy identifier",
+      "example": "AIG-GL-2024-001234"
+    },
+    "policy_type": {
+      "type": "string",
+      "description": "Type of insurance policy",
+      "example": "Commercial General Liability"
+    },
+    "insured_name": {
+      "type": "string",
+      "description": "Name of the insured entity",
+      "example": "Acme Corporation"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Policy effective date",
+      "example": "2024-01-01"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Policy expiration date",
+      "example": "2025-01-01"
+    },
+    "premium": {
+      "type": "number",
+      "description": "Annual premium amount in USD",
+      "example": 125000.0
+    },
+    "coverage_limit": {
+      "type": "number",
+      "description": "Policy coverage limit in USD",
+      "example": 5000000.0
+    },
+    "deductible": {
+      "type": "number",
+      "description": "Policy deductible amount in USD",
+      "example": 50000.0
+    },
+    "status": {
+      "type": "string",
+      "description": "Policy status",
+      "example": "Active"
+    }
+  }
+}

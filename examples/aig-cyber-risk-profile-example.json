@@ -1,0 +1,11 @@
+{
+  "organization_name": "TechCorp Inc",
+  "annual_revenue": 10000000.0,
+  "employee_count": 200,
+  "data_records_count": 100000,
+  "mfa_enabled": true,
+  "endpoint_protection": true,
+  "backup_frequency": "Daily",
+  "incident_response_plan": true,
+  "prior_breaches": 0
+}

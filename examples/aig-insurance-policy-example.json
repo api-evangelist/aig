@@ -1,0 +1,11 @@
+{
+  "policy_number": "AIG-GL-2024-001234",
+  "policy_type": "Commercial General Liability",
+  "insured_name": "Acme Corporation",
+  "effective_date": "2024-01-01",
+  "expiration_date": "2025-01-01",
+  "premium": 125000.0,
+  "coverage_limit": 5000000.0,
+  "deductible": 50000.0,
+  "status": "Active"
+}

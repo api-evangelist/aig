@@ -1,0 +1,9 @@
+{
+  "entity_name": "Acme Corporation",
+  "industry": "Manufacturing",
+  "naics_code": "332999",
+  "annual_revenue": 50000000.0,
+  "employee_count": 500,
+  "locations": [],
+  "loss_history": []
+}

@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aig": "https://aig.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "InsurancePolicy": "aig:InsurancePolicy",
+    "InsuranceClaim": "aig:InsuranceClaim",
+    "RiskProfile": "aig:RiskProfile",
+    "CyberRiskProfile": "aig:CyberRiskProfile",
+    "policyNumber": {
+      "@id": "aig:policy_number",
+      "@type": "xsd:string"
+    },
+    "policyType": {
+      "@id": "aig:policy_type",
+      "@type": "xsd:string"
+    },
+    "insuredName": {
+      "@id": "aig:insured_name",
+      "@type": "xsd:string"
+    },
+    "effectiveDate": {
+      "@id": "aig:effective_date",
+      "@type": "xsd:date"
+    },
+    "expirationDate": {
+      "@id": "aig:expiration_date",
+      "@type": "xsd:date"
+    },
+    "premium": {
+      "@id": "aig:premium",
+      "@type": "xsd:decimal"
+    },
+    "coverageLimit": {
+      "@id": "aig:coverage_limit",
+      "@type": "xsd:decimal"
+    },
+    "deductible": {
+      "@id": "aig:deductible",
+      "@type": "xsd:decimal"
+    },
+    "claimNumber": {
+      "@id": "aig:claim_number",
+      "@type": "xsd:string"
+    },
+    "lossDate": {
+      "@id": "aig:loss_date",
+      "@type": "xsd:date"
+    },
+    "lossAmount": {
+      "@id": "aig:loss_amount",
+      "@type": "xsd:decimal"
+    },
+    "claimStatus": {
+      "@id": "aig:claim_status",
+      "@type": "xsd:string"
+    },
+    "naicsCode": {
+      "@id": "aig:naics_code",
+      "@type": "xsd:string"
+    },
+    "annualRevenue": {
+      "@id": "aig:annual_revenue",
+      "@type": "xsd:decimal"
+    },
+    "employeeCount": {
+      "@id": "aig:employee_count",
+      "@type": "xsd:integer"
+    },
+    "mfaEnabled": {
+      "@id": "aig:mfa_enabled",
+      "@type": "xsd:boolean"
+    },
+    "incidentResponsePlan": {
+      "@id": "aig:incident_response_plan",
+      "@type": "xsd:boolean"
+    }
+  }
+}

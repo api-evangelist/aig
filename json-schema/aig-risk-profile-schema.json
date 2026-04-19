@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/json-schema/aig-risk-profile-schema.json",
+  "title": "RiskProfile",
+  "description": "Risk profile for an insured entity",
+  "type": "object",
+  "properties": {
+    "entity_name": {
+      "type": "string",
+      "description": "Name of the insured entity",
+      "example": "Acme Corporation"
+    },
+    "industry": {
+      "type": "string",
+      "description": "Industry classification",
+      "example": "Manufacturing"
+    },
+    "naics_code": {
+      "type": "string",
+      "description": "NAICS industry code",
+      "example": "332999"
+    },
+    "annual_revenue": {
+      "type": "number",
+      "description": "Annual revenue in USD",
+      "example": 50000000.0
+    },
+    "employee_count": {
+      "type": "integer",
+      "description": "Number of employees",
+      "example": 500
+    },
+    "locations": {
+      "type": "array",
+      "description": "List of business locations",
+      "items": {
+        "type": "object"
+      }
+    },
+    "loss_history": {
+      "type": "array",
+      "description": "Historical loss records",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

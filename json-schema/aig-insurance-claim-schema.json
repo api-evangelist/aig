@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/json-schema/aig-insurance-claim-schema.json",
+  "title": "InsuranceClaim",
+  "description": "An insurance claim filed under an AIG policy",
+  "type": "object",
+  "properties": {
+    "claim_number": {
+      "type": "string",
+      "description": "Unique claim identifier",
+      "example": "CLM-2024-567890"
+    },
+    "policy_number": {
+      "type": "string",
+      "description": "Associated policy number",
+      "example": "AIG-GL-2024-001234"
+    },
+    "loss_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of loss occurrence",
+      "example": "2024-06-15"
+    },
+    "reported_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date claim was reported",
+      "example": "2024-06-17"
+    },
+    "loss_description": {
+      "type": "string",
+      "description": "Description of the loss or damage",
+      "example": "Property damage due to fire in warehouse facility"
+    },
+    "loss_amount": {
+      "type": "number",
+      "description": "Estimated loss amount in USD",
+      "example": 250000.0
+    },
+    "claim_status": {
+      "type": "string",
+      "description": "Current claim status",
+      "example": "Under Investigation"
+    },
+    "adjuster_name": {
+      "type": "string",
+      "description": "Name of assigned claims adjuster",
+      "example": "Jane Smith"
+    }
+  }
+}
