@@ -49,6 +49,8 @@ apis:
       type: Portal
       title: Claims Portal
 common:
+  - type: DomainSecurity
+    url: security/aig-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/aig
   - name: AIG Website
@@ -87,6 +89,8 @@ common:
     url: https://jobs.aig.com
     type: Portal
     description: AIG careers and job opportunities portal.
+  - url: https://www.aig.com/home/newsroom/stories
+    type: Blog
   - type: Features
     data:
     - name: Global Commercial Insurance
