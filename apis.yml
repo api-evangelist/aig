@@ -32,7 +32,7 @@ description: American International Group, Inc. (AIG) is a global insurance orga
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: aig:aig
     name: AIG Insurance
