@@ -3,6 +3,13 @@ url: https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/apis.y
 name: AIG
 tags:
   - Insurance
+  - Financial-Services
+  - Property Casualty
+  - Cyber Insurance
+  - Enterprise
+  - Fortune 100
+tags_raw:
+  - Insurance
   - Financial Services
   - Property Casualty
   - Cyber Insurance
