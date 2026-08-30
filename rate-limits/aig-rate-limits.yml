@@ -4,37 +4,41 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AIG
 providerId: aig
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-08-30'
+generated: '2026-08-30'
+method: searched
+reconciled: true
 tags:
   - Insurance
   - Financial Services
   - Property Casualty
   - Rate Limiting
-description: AIG does not publish public API rate-limit documentation. API integrations with AIG are
-  bilateral, governed by broker / distribution agreements, and any throttling thresholds are set
-  contractually rather than as a published policy.
-notes: No public rate-limit documentation; placeholders pending direct vendor confirmation.
+limit_count: 0
+description: >-
+  AIG publishes no rate limits. No documentation of throttling exists on any AIG property, and no
+  RateLimit-*, X-RateLimit-* or Retry-After header was returned on any response observed from
+  https://commercial.api.aig.com during the 2026-08-30 probe (403 at the host root, 400 and 500 on
+  the two gateway routes discovered). Throughput for broker and producer integrations is set
+  contractually, not published.
+limits: []
+headers_observed: []
+response_codes:
+  observed:
+    - 400
+    - 403
+    - 500
+  throttled: unknown
+note: >-
+  An honest zero. The previous version of this file carried a synthetic "Contractual integration
+  limits" entry and a backoff policy written by the 2026-05-04 bulk sweep rather than harvested from
+  AIG; both have been removed.
 sources:
-  - https://www.aig.com/
-responseCodes:
-  throttled: 429
-  serviceUnavailable: 503
-limits:
-  - name: Contractual integration limits
-    scope: contract
-    metric: varies
-    limit: defined per broker / distribution agreement
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter on throttling responses,
-      honoring Retry-After when present.
-  - name: Contractual Limits
-    description: Throughput and concurrency are negotiated as part of the broker / integration
-      agreement; raise via the AIG technology relationship contact.
+  - url: https://commercial.api.aig.com/pmp-gateway/c2a/pmp-ext-gtw-api
+    status: 400
+  - url: https://commercial.api.aig.com/
+    status: 403
+  - url: https://www.aig.com/sitemap.xml
+    status: 200
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

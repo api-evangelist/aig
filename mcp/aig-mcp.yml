@@ -1,0 +1,20 @@
+generated: '2026-08-30'
+method: searched
+status: none
+source: >-
+  Search of AIG's public web properties, npm, and the MCP registries (2026-08-30)
+provider: AIG
+providerId: aig
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+server: null
+tools: []
+note: >-
+  AIG ships no MCP server, hosted or local, and there is no OpenAPI to derive a candidate tool list
+  from — commercial.api.aig.com is undocumented and its only public responses are auth denials. No
+  MCPServer pointer is emitted, because none exists.

@@ -1,0 +1,60 @@
+generated: '2026-08-30'
+method: probed
+source: >-
+  Live unauthenticated requests to https://commercial.api.aig.com (2026-08-30). No OpenAPI exists to
+  derive from and AIG publishes no error reference, so every entry below is an envelope actually
+  returned by the gateway.
+provider: AIG
+providerId: aig
+format: bespoke-json
+format_note: >-
+  Not RFC 9457. Two distinct envelopes are in use behind the same host — a flat {"error": "<string>"}
+  from the Okta protect proxy and a nested {"error": {"code", "message", "details"}} from the service
+  behind it — and the edge also returns a plain-text body for host-level denials. An agent cannot
+  parse AIG gateway errors with one shape.
+envelopes:
+  - name: edge-deny
+    content_type: text/plain
+    shape: 'You are not authorized, Forbidden, Contact AIG HD'
+  - name: proxy-policy
+    content_type: application/json
+    shape: '{"error": "<message>"}'
+  - name: service-error
+    content_type: application/json
+    shape: '{"error": {"code": <int>, "message": "<string>", "details": "<string>"}}'
+problems:
+  - status: 403
+    title: Not authorized at the edge
+    envelope: edge-deny
+    body: 'You are not authorized, Forbidden, Contact AIG HD'
+    observed_at: https://commercial.api.aig.com/
+    remediation: >-
+      The host root and all /.well-known/* paths are denied outright. Only provisioned gateway
+      routes are reachable; contact AIG to be routed to a service path.
+  - status: 400
+    title: Missing Authorization header
+    envelope: proxy-policy
+    body: >-
+      {"error" : "Protect Proxy via okta Service Policy: The message does not contain the
+      Authorization header"}
+    observed_at: https://commercial.api.aig.com/pmp-gateway/c2a/pmp-ext-gtw-api
+    remediation: >-
+      Present a bearer token from the Okta authorization server at
+      https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7. Note the status is 400, not
+      401, and no WWW-Authenticate challenge is returned — an agent cannot use the standard
+      unauthenticated-retry signal here.
+  - status: 500
+    title: Internal server error on an unauthenticated call
+    envelope: service-error
+    body: >-
+      {"error": {"code": 500, "message": "Internal Server Error", "details": "Value was expected to
+      be true but it was false instead"}}
+    observed_at: https://commercial.api.aig.com/pmp-usrmgmt-gateway/c2a/pmp-ext-usermgmt-gtw-api
+    remediation: >-
+      The user-management gateway raises a 500 rather than a 401/400 when called without credentials,
+      and leaks an internal assertion string in `details`. A client cannot distinguish "my request
+      was wrong" from "AIG is broken" on this route.
+findings:
+  - Two different JSON error envelopes on one host, plus a plain-text edge denial.
+  - A missing credential produces 400 on one gateway and 500 on another.
+  - No WWW-Authenticate header, no error codes, no documented catalog.

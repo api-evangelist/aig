@@ -1,0 +1,34 @@
+generated: '2026-08-30'
+method: searched
+source: >-
+  npm registry search, PyPI, and AIG's own web properties (2026-08-30)
+provider: AIG
+providerId: aig
+package_count: 0
+packages: []
+official_sdk_count: 0
+searched:
+  - registry: npm
+    query: aig insurance
+    url: https://registry.npmjs.org/-/v1/search?text=aig%20insurance
+    result: >-
+      No first-party AIG package. The only AIG-named hits belong to Tata AIG (an unrelated
+      India joint venture) and to unrelated projects that merely contain the letters "aig".
+  - registry: pypi
+    query: aig
+    url: https://pypi.org/pypi/aig/json
+    result: >-
+      HTTP 200 for a package named "aig", but it is not published by American International Group;
+      not recorded as an AIG SDK.
+  - registry: postman
+    query: AIG insurance
+    result: >-
+      Public workspaces exist only for Tata AIG, not for AIG. Not first-party.
+  - surface: AIG developer portal
+    url: https://www.developers.aig.com/apis
+    result: >-
+      Host refused TCP connections on 443 and 80; if AIG ships client libraries they would be listed
+      there, and that could not be checked.
+note: >-
+  AIG publishes no first-party client library in any public registry. No SDKs pointer is emitted —
+  recording a checked absence, not an unchecked one.

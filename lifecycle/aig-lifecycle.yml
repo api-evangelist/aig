@@ -1,0 +1,54 @@
+generated: '2026-08-30'
+method: searched
+source: >-
+  https://www.aig.com sitemap walk plus live probes of AIG's portal and API hosts (2026-08-30)
+provider: AIG
+providerId: aig
+versioning:
+  scheme: unknown
+  current: null
+  docs: null
+  note: >-
+    Observed gateway routes on commercial.api.aig.com carry no version segment and AIG publishes no
+    versioning policy.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No deprecation or sunset policy is published. One dated retirement IS advertised, but only inside
+    an application's own runtime config rather than in any developer-facing notice — the Producer
+    Management Portal ships "pcgRemovalDate": "12-06-2025" (Private Client Group removal) in
+    https://www.producermanagementportal.aig.com/assets/config/config.json. That is a deprecation
+    date visible to a machine and to nobody else.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  probed:
+    - url: https://status.aig.com
+      status: '<no response>'
+  note: >-
+    No status page exists. AIG does publish incident-adjacent notice pages for its insurance
+    operations — https://www.aig.com/home/about/disaster-notifications (200) and
+    https://www.aig.com/home/risk-solutions/why-aig/producer-notifications (200) — but neither
+    reports API or portal availability, so neither is recorded as a status page.
+maintenance_windows:
+  - source: https://www.producermanagementportal.aig.com/assets/config/config.json
+    window: 'Dec 11, 2024 5:30 PM EST - Dec 11, 2024 6:30 PM EST'
+    note: >-
+      Stale maintenance banner still shipping in the production portal config as of 2026-08-30 —
+      recorded as evidence of how AIG communicates downtime (in-app only), not as an upcoming window.
+changelog:
+  url: null
+  note: No dated API or portal changelog was found on any AIG host.
+deprecated_operations: []
+retired_surfaces:
+  - name: AIG Developer Portal
+    url: https://www.developers.aig.com/home
+    state: unreachable
+    evidence: >-
+      Host resolves (167.230.142.158) but refuses TCP on 443 and 80; probed 2026-08-30. Search
+      engines still index its API catalog pages (/apis, /apilist, /apis/direct-quote/direct-quote-api,
+      /apis/product-configuration/product-configuration-api) and no Wayback capture of them exists.
+      AIG published a developer portal with a named API catalog and it is now dark.

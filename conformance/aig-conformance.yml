@@ -1,0 +1,62 @@
+generated: '2026-08-30'
+method: probed
+source: >-
+  AIG's own OAuth/OIDC discovery documents on auth1.customerpltfm.aig.com, observed responses from
+  https://commercial.api.aig.com, and https://www.aig.com/home/about/cyber-and-information-security/vulnerability-disclosure
+provider: AIG
+providerId: aig
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      RFC 8414 authorization-server metadata served at
+      https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/.well-known/oauth-authorization-server
+      (HTTP 200) with authorization/token/introspection/revocation endpoints.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      OpenID Connect Discovery 1.0 document at
+      https://auth1.customerpltfm.aig.com/.well-known/openid-configuration (HTTP 200), RS256 ID
+      tokens, userinfo and jwks endpoints published.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: Document served at the RFC 8414 well-known path; HTTP 200.
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported = [S256] in the authorization-server metadata.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: >-
+      /.well-known/security.txt returns HTTP 403 on www.aig.com and commercial.api.aig.com; AIG
+      routes disclosure through a HackerOne program page instead of a security.txt.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Gateway errors observed at commercial.api.aig.com use bespoke JSON envelopes
+      ({"error": "..."} and {"error": {"code", "message", "details"}}), not application/problem+json.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI/Swagger document was reachable on any AIG host; the developer portal that would
+      carry one (www.developers.aig.com) refused TCP connections on 443 and 80.
+  - id: acord
+    conforms: unverified
+    evidence: >-
+      AIG is named among the carriers contributing to ACORD's Next-Generation Digital Standards in
+      ACORD's own 2020 announcement, but no AIG-published contract is readable, so no ACORD message
+      or object-model shape could be inspected. Recorded as unverified rather than claimed — the
+      domain-standard check reads the contract, not a membership mention.
+    reference: https://www.acord.org/acord-about/acord-news/2020/04/08/acord-releases-next-generation-digital-standards-to-enable-streamlined-insurance-data-exchange
+domain_standard:
+  market: Insurance (property casualty, commercial specialty)
+  candidate: ACORD Next-Generation Digital Standards
+  declared_in_contract: false
+  note: >-
+    ACORD is the domain standard this market would be measured against. AIG publishes no readable
+    contract, so there is nothing in which to find an ACORD signature. Reward-only check: no credit
+    claimed, no penalty asserted.
+compliance_program_published: false
+compliance_note: >-
+  AIG's public cyber and information security pages name no certification (no SOC 2, ISO 27001,
+  PCI DSS, HIPAA or FedRAMP mention was found), and no trust center exists, so no Compliance
+  pointer is emitted.

@@ -1,0 +1,59 @@
+generated: '2026-08-30'
+method: probed
+source: live HTTPS probes of every AIG host named in apis.yml plus the API + identity hosts
+  discovered from the Producer Management Portal runtime configuration
+note: >-
+  www.aig.com sits behind an edge policy that answers HTTP 403 to every /.well-known/* path
+  (452-byte Apache "403 Forbidden" body, identical for known and nonsense paths), so no
+  discovery document can be read there. The real hits are on AIG's Okta identity host,
+  auth1.customerpltfm.aig.com, which serves anonymous OpenID Connect and RFC 8414
+  authorization-server metadata for both the org issuer and the customer-platform
+  authorization server that fronts commercial.api.aig.com.
+hit_count: 3
+hosts:
+  - host: https://auth1.customerpltfm.aig.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: aig-openid-configuration.json
+      - path: /oauth2/aus1aaqj1zvwVDL2n5d7/.well-known/openid-configuration
+        status: 200
+        file: aig-openid-configuration-pmp.json
+      - path: /oauth2/aus1aaqj1zvwVDL2n5d7/.well-known/oauth-authorization-server
+        status: 200
+        file: aig-oauth-authorization-server.json
+  - host: https://commercial.api.aig.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+  - host: https://www.aig.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+      - path: /security.txt
+        status: 404
+      - path: /llms.txt
+        status: 404
+soft_404_control:
+  url: https://www.aig.com/.well-known/agent.json
+  status: 403
+  bytes: 452
+  finding: >-
+    Every /.well-known/* path on www.aig.com returns the same 452-byte edge 403, so no
+    document is being served there — this is a uniform deny, not a catch-all 200.

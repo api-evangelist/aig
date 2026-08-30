@@ -1,0 +1,77 @@
+generated: '2026-08-30'
+method: probed
+source: >-
+  Live probes of https://commercial.api.aig.com and https://auth1.customerpltfm.aig.com plus the
+  publicly served runtime configuration of https://www.producermanagementportal.aig.com (2026-08-30)
+provider: AIG
+providerId: aig
+summary: >-
+  AIG has a real, production API gateway (commercial.api.aig.com) fronted by an Okta policy proxy,
+  but publishes no developer documentation for it. Everything below was established by calling the
+  surface anonymously and by reading AIG's own discovery documents; anything that could only be
+  learned from documentation AIG does not publish is recorded as unknown rather than assumed.
+authentication:
+  style: oauth2-bearer
+  header: 'Authorization: Bearer <token>'
+  issuer: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7
+  detail: authentication/aig-authentication.yml
+  challenge_header: false
+  challenge_note: >-
+    No WWW-Authenticate header is returned on an unauthenticated call; the gateway answers 400 with
+    a prose message instead of a 401 challenge.
+base_url:
+  host: https://commercial.api.aig.com
+  path_style: '/<service>-gateway/c2a/<service>-ext-gtw-api'
+  observed:
+    - https://commercial.api.aig.com/pmp-gateway/c2a/pmp-ext-gtw-api
+    - https://commercial.api.aig.com/pmp-usrmgmt-gateway/c2a/pmp-ext-usermgmt-gtw-api
+  note: >-
+    Route naming is gateway-per-application ("c2a" = customer-to-AIG), not resource-oriented. Two
+    applications, two gateways, two prefixes.
+idempotency:
+  supported: unknown
+  header: null
+  note: >-
+    No idempotency key header is documented and no write route is callable anonymously, so this
+    could not be established either way. Recorded as unknown, not as absent.
+pagination:
+  style: unknown
+  note: No readable contract or documentation.
+versioning:
+  scheme: unknown
+  in_path: false
+  note: >-
+    The observed gateway paths carry no version segment. AIG's (currently unreachable) developer
+    portal indexes a "Direct Quote API" described in search listings as Version 1.00, which suggests
+    document-level versioning rather than URI versioning, but that could not be verified first-hand.
+errors:
+  detail: errors/aig-problem-types.yml
+  envelope_count: 3
+  rfc9457: false
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No RateLimit-*/X-RateLimit-* headers were returned on any observed response and no limits are
+    published. See rate-limits/aig-rate-limits.yml.
+request_tracing:
+  header: unknown
+  note: No request-id or correlation header was observed on the anonymous responses.
+content_type: application/json
+observability:
+  note: >-
+    AIG instruments its own portals with Splunk RUM, Dynatrace and Adobe Analytics; none of that is
+    an API convention, but it does confirm the portals are actively maintained.
+reversibility:
+  grade: null
+  assessable: false
+  reason: >-
+    AIG publishes no operations, no reference and no docs for commercial.api.aig.com, so there is no
+    way to identify a write surface, let alone a cancel/void/reverse path or the window it runs in.
+    This is NOT recorded as `na` — `na` means a genuinely read-only API, and AIG's gateway is
+    plainly transactional (producer management, user management, quoting). It is unmeasurable
+    because the contract is unpublished.
+  operations: []
+  windows: []
+dry_run_mode:
+  supported: unknown
+  note: No sandbox or test mode is published; see the absent sandbox/ artifact.

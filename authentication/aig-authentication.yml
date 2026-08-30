@@ -1,0 +1,105 @@
+generated: '2026-08-30'
+method: probed
+source: >-
+  https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/.well-known/oauth-authorization-server
+  (HTTP 200) and https://auth1.customerpltfm.aig.com/.well-known/openid-configuration (HTTP 200),
+  plus observed 400/403 responses from https://commercial.api.aig.com
+provider: AIG
+providerId: aig
+summary: >-
+  AIG publishes no public developer authentication guide, but its production API gateway and the
+  identity provider in front of it are both reachable anonymously enough to read the auth model.
+  commercial.api.aig.com is fronted by an Okta-backed "Protect Proxy" that rejects any request
+  without an Authorization header; tokens are issued by AIG's Okta org at
+  auth1.customerpltfm.aig.com, which serves standard OIDC and RFC 8414 discovery documents.
+  There is no anonymous/self-service registration path — client credentials are provisioned to
+  appointed brokers and producers through AIG, not through a developer portal signup.
+schemes:
+  - name: OAuth2 / OpenID Connect (Okta)
+    type: oauth2
+    protocol: OpenID Connect 1.0
+    issuer: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7
+    authorization_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/authorize
+    token_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/token
+    userinfo_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/userinfo
+    jwks_uri: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/keys
+    introspection_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/introspect
+    revocation_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/revoke
+    end_session_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/logout
+    device_authorization_endpoint: https://auth1.customerpltfm.aig.com/oauth2/aus1aaqj1zvwVDL2n5d7/v1/device/authorize
+    registration_endpoint: https://auth1.customerpltfm.aig.com/oauth2/v1/clients
+    grant_types:
+      - authorization_code
+      - implicit
+      - refresh_token
+      - password
+      - client_credentials
+      - urn:ietf:params:oauth:grant-type:device_code
+      - urn:openid:params:grant-type:ciba
+    token_endpoint_auth_methods:
+      - client_secret_basic
+      - client_secret_post
+      - client_secret_jwt
+      - private_key_jwt
+      - none
+    pkce:
+      supported: true
+      code_challenge_methods:
+        - S256
+    id_token_signing_alg: RS256
+    id_token_encryption_alg:
+      - RSA-OAEP-256
+      - RSA-OAEP-384
+      - RSA-OAEP-512
+    claims:
+      - ver
+      - jti
+      - iss
+      - aud
+      - iat
+      - exp
+      - cid
+      - uid
+      - scp
+      - sub
+    scopes_ref: scopes/aig-scopes.yml
+    source: well-known/aig-oauth-authorization-server.json
+  - name: OpenID Connect (AIG Okta org issuer)
+    type: openIdConnect
+    issuer: https://auth1.customerpltfm.aig.com
+    openid_configuration: https://auth1.customerpltfm.aig.com/.well-known/openid-configuration
+    scopes:
+      - openid
+      - email
+      - profile
+      - address
+      - phone
+      - offline_access
+      - groups
+    source: well-known/aig-openid-configuration.json
+  - name: Bearer token at the API gateway
+    type: http
+    scheme: bearer
+    applies_to: https://commercial.api.aig.com
+    evidence: >-
+      GET https://commercial.api.aig.com/pmp-gateway/c2a/pmp-ext-gtw-api returned HTTP 400
+      {"error":"Protect Proxy via okta Service Policy: The message does not contain the
+      Authorization header"} — the gateway names Okta as the policy enforcement point and an
+      Authorization header as the required credential.
+mfa:
+  enforced: true
+  evidence: >-
+    https://www.aig.com/mfa-authentication is a published page in AIG's sitemap and the Producer
+    Management Portal embeds the Okta Sign-In Widget with MFA/OTP grant types advertised by the
+    authorization server.
+onboarding:
+  self_service: false
+  note: >-
+    No public signup or sandbox key issuance was found. API credentials are issued to appointed
+    brokers, producers and clients under distribution/technology agreements; the portal login
+    surfaces are https://www.myaig.com and https://www.producermanagementportal.aig.com.
+docs: null
+docs_note: >-
+  AIG's developer portal host (www.developers.aig.com) is indexed by search engines but refused
+  TCP connections on both 443 and 80 at the time of this probe, so no published authentication
+  guide could be read.

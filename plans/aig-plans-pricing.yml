@@ -4,45 +4,35 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AIG
 providerId: aig
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-08-30'
+generated: '2026-08-30'
+method: searched
+reconciled: true
 tags:
   - Insurance
   - Financial Services
   - Property Casualty
   - Cyber Insurance
-description: AIG (American International Group) is a global commercial insurance carrier. It does not
-  publish a public API rate card; broker, agent, and client-systems integrations are arranged through
-  AIG's broker portals, distribution agreements, and dedicated technology relationships. Premium
-  pricing for the underlying insurance products is quoted per risk by AIG underwriters.
-notes: No public API pricing. AIG's pricing is on insurance premiums, not API consumption; API access
-  is contractual.
+plan_count: 0
+description: >-
+  AIG publishes no API plans, tiers or rate card of any kind. The 2026-08-30 pass walked
+  www.aig.com's full sitemap (361 URLs) and probed AIG's live API gateway and developer-portal
+  hosts; there is no pricing page for API access, no signup, and no self-service tier. Access to
+  https://commercial.api.aig.com is provisioned to appointed brokers, producers and clients under
+  distribution and technology agreements, and the commercial relationship is priced on insurance
+  premium rather than on API consumption.
+plans: []
+note: >-
+  An honest zero, not an unchecked one. The previous version of this file carried a
+  synthetic "Broker / Distribution Agreement" plan written by the 2026-05-04 bulk sweep; AIG never
+  published it, so it has been removed rather than left standing as a claim.
 sources:
-  - https://www.aig.com/
-plans:
-  - id: aig-broker-distribution
-    name: Broker / Distribution Agreement
-    type: enterprise
-    description: API and data-feed access for appointed brokers, agents, and large clients. Provisioning,
-      throughput, and any technology fees are governed by AIG's distribution and integration agreements.
-    entries:
-      - label: Distribution agreement
-        name: distribution_agreement
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: contact AIG
-        userMultiplied: false
-    elements:
-      - name: Broker / agent appointment required
-      - name: Submission, quote, and policy-admin integrations
-      - name: Pricing on insurance premium, not API calls
+  - url: https://www.aig.com/sitemap.xml
+    status: 200
+  - url: https://www.developers.aig.com/apis
+    status: '<no response — TCP refused on 443 and 80>'
+  - url: https://commercial.api.aig.com/
+    status: 403
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
