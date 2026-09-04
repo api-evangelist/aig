@@ -45,7 +45,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aig.png
 access: 3rd-Party
 created: '2025-02-17'
 modified: '2026-08-30'
-position: Consumer
+position: Consuming
 description: American International Group, Inc. (AIG) is a global insurance organization founded in 1919 and operating in over 200 countries and jurisdictions. AIG provides comprehensive risk
   solutions including property casualty, cyber, professional liability, casualty, specialty insurance, and reinsurance services for individuals and businesses. AIG runs a live, production API
   gateway at commercial.api.aig.com fronted by an Okta policy proxy, and its Okta identity host serves anonymous OpenID Connect and OAuth 2.0 authorization-server metadata, but AIG publishes no
