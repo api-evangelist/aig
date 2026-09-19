@@ -89,7 +89,7 @@ apis:
     - Brokers
     - Producer Management
     - Authentication
-    - Gateway
+    - Gateways
     tags_raw:
     - Insurance
     - Broker
