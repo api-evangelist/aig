@@ -1,7 +1,9 @@
 ---
 title: 'AIG''s Zaffino: Outcomes From AI Use Went From '' ...'
 url: https://www.insurancejournal.com/news/national/2026/02/13/858033.htm
-date: '2026-05-25'
+published: '2026-02-13'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"AIG" press release artificial intelligence'
 position: 5
 source: serpapi-google

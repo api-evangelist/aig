@@ -1,7 +1,9 @@
 ---
 title: Q4 2025 Earnings Release
 url: https://www.aig.com/content/dam/aig/america-canada/us/documents/investor-relations/earnings-result/aig-reports-4q25-results.pdf
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AIG" press release artificial intelligence'
 position: 4
 source: serpapi-google

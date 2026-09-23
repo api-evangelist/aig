@@ -1,7 +1,9 @@
 ---
 title: AIG leans on generative AI to speed underwriting
 url: https://www.ciodive.com/news/aig-insurance-agentic-generative-ai-underwriting/732183/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AIG" press release artificial intelligence'
 position: 1
 source: serpapi-google
