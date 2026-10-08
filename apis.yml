@@ -115,6 +115,8 @@ apis:
     - url: well-known/aig-well-known.yml
       type: WellKnown
 common:
+  - type: FinOps
+    url: finops/aig-finops.yml
   - type: DomainSecurity
     url: security/aig-domain-security.yml
   - type: VulnerabilityDisclosure
