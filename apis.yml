@@ -4,7 +4,7 @@ name: AIG
 tags:
   - Insurance
   - Financial Services
-  - Property Casualty
+  - Property and Casualty
   - Cyber Insurance
   - Enterprise
   - Fortune 100
@@ -61,6 +61,12 @@ apis:
     name: AIG Insurance
     tags:
     - Insurance
+    - Property and Casualty
+    - Cyber
+    - Professional Liability
+    - Specialty
+    tags_raw:
+    - Insurance
     - Property Casualty
     - Cyber
     - Professional Liability
@@ -87,7 +93,7 @@ apis:
     name: AIG Commercial API Gateway
     tags:
     - Insurance
-    - Brokers
+    - Brokerage
     - Producer Management
     - Authentication
     - Gateways
@@ -97,6 +103,7 @@ apis:
     - Producer Management
     - OAuth
     - Gateway
+    - Brokers
     humanURL: https://www.aig.com/home/app-and-web-portal
     baseURL: https://commercial.api.aig.com
     description: AIG's production API gateway for its commercial broker and producer applications, discovered from the publicly served runtime configuration of the AIG Producer Management Portal.
