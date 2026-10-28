@@ -1,4 +1,4 @@
-# AIG (aig)
+# AIG
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,119 +64,161 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-American International Group, Inc. (AIG) is a global insurance organization founded in 1919 and operating in over 200 countries and jurisdictions. AIG provides comprehensive risk solutions including property casualty, cyber, professional liability, casualty, specialty insurance, and reinsurance services for individuals and businesses. AIG operates digital portals for brokers and clients including myAIG for North America brokers and IntelliRisk Advanced for claims management, but does not currently offer a public developer API.
+American International Group, Inc. (AIG) is a global insurance organization founded in 1919 and operating in over 200 countries and jurisdictions. AIG provides comprehensive risk solutions including property casualty, cyber, professional liability, casualty, specialty insurance, and reinsurance services for individuals and businesses. AIG runs a live, production API gateway at commercial.api.aig.com fronted by an Okta policy proxy, and its Okta identity host serves anonymous OpenID Connect and OAuth 2.0 authorization-server metadata, but AIG publishes no OpenAPI, no public API reference, no SDK and no self-service signup — API credentials are provisioned to appointed brokers, producers and clients through myAIG, the Producer Management Portal and distribution agreements. AIG's own developer portal host, www.developers.aig.com, is still indexed by search engines but refused TCP connections on ports 443 and 80 when probed in August 2026.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/aig/refs/heads/main/apis.yml)
+**Areas:** Insurance · Financial Services · Property and Casualty · Cyber Insurance · Enterprise · Fortune 100
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## AIG on APIs.io
 
-## Tags:
+Everything profiled for AIG is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aig/](https://apis.io/providers/aig/)** — or go straight to one of the APIs or properties below.
 
- - Insurance, Financial Services, Property Casualty, Cyber Insurance, Enterprise
+### APIs (2)
 
-## Timestamps
+- [AIG Insurance](https://apis.io/apis/aig/aig/) — AIG offers commercial and personal insurance products globally including property casualty, cyber insurance, casualty, professional liability, financial…
+- [AIG Commercial API Gateway](https://apis.io/apis/aig/aig-commercial-api-gateway/) — AIG's production API gateway for its commercial broker and producer applications, discovered from the publicly served runtime configuration of the AIG…
 
-- **Created:** 2025-02-17
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### AIG Insurance
-AIG offers commercial and personal insurance products globally including property casualty, cyber insurance, casualty, professional liability, financial lines, specialty risk, and reinsurance. AIG serves multinational corporations, financial institutions, governments, and individuals.
+#### JSON Schema (4)
 
-**Human URL:** [https://www.aig.com](https://www.aig.com)
+The data models the API reads and writes.
 
-#### Tags:
+- [CyberRiskProfile](https://apis.io/schemas/aig/aig-cyber-risk-profile/)
+- [InsuranceClaim](https://apis.io/schemas/aig/aig-insurance-claim/)
+- [InsurancePolicy](https://apis.io/schemas/aig/aig-insurance-policy/)
+- [RiskProfile](https://apis.io/schemas/aig/aig-risk-profile/)
 
- - Insurance, Property Casualty, Cyber, Professional Liability, Specialty
+#### JSON Structure (4)
 
-#### Properties
+Data models expressed in JSON Structure.
+
+- [Aig Cyber Risk Profile Structure](https://apis.io/json-structure/aig/aig-cyber-risk-profile-structure/)
+- [Aig Insurance Claim Structure](https://apis.io/json-structure/aig/aig-insurance-claim-structure/)
+- [Aig Insurance Policy Structure](https://apis.io/json-structure/aig/aig-insurance-policy-structure/)
+- [Aig Risk Profile Structure](https://apis.io/json-structure/aig/aig-risk-profile-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Aig Context](https://apis.io/jsonld/aig/aig-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Aig Vocabulary](https://apis.io/vocabularies/aig/aig-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Aig Cyber Risk Profile Example](https://apis.io/examples/aig/aig-cyber-risk-profile-example/)
+- [Aig Insurance Claim Example](https://apis.io/examples/aig/aig-insurance-claim-example/)
+- [Aig Insurance Policy Example](https://apis.io/examples/aig/aig-insurance-policy-example/)
+- [Aig Risk Profile Example](https://apis.io/examples/aig/aig-risk-profile-example/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [AIG — jsonschema rules](https://apis.io/rules/aig/aig-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aig Authentication](https://apis.io/security/aig/aig-authentication/)
+- [Aig Domain Security](https://apis.io/security/aig/aig-domain-security/)
+- [Aig Vulnerability Disclosure](https://apis.io/security/aig/aig-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Aig Scopes](https://apis.io/scopes/aig/aig-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Aig Plans Pricing](https://apis.io/plans/aig/aig-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Aig Rate Limits](https://apis.io/rate-limits/aig/aig-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Aig Finops](https://apis.io/finops/aig/aig-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.aig.com)
-- [Business Insurance](https://www.aig.com/business)
-- [Individual Insurance](https://www.aig.com/individual)
-- [myAIG Broker Portal](https://myaig.aig.com)
-- [Claims Portal](https://www.aig.com/home/resources/global-network/claims)
+- [Documentation](https://www.aig.com/business)
+- [Support](https://www.aig.com/home/contact)
+- [Blog](https://www.aig.com/home/newsroom/stories)
+- [Security](https://www.aig.com/home/about/cyber-and-information-security/vulnerability-disclosure)
+- [Terms of service](https://www.aig.com/terms-of-use)
+- [Privacy policy](https://www.aig.com/privacy-policy)
 
-## Common Properties
+## API Evangelist rating
 
-- [AIG Website](https://www.aig.com)
-- [AIG Business Insurance](https://www.aig.com/business)
-- [AIG Individual Insurance](https://www.aig.com/individual)
-- [myAIG Broker Portal](https://myaig.aig.com)
-- [AIG IntelliRisk](https://www.aig.com/business/insurance/workers-compensation/intellirisk)
-- [AIG Privacy Policy](https://www.aig.com/about-us/privacy)
-- [AIG Terms of Use](https://www.aig.com/about-us/terms-and-conditions)
-- [AIG Investor Relations](https://www.aig.com/about-us/investors)
-- [AIG Careers](https://jobs.aig.com)
+**Kin Score 29.5** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Features
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 10.7 |
+| Contract governance | 28.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 38.1 |
+| Access clarity | 21.1 |
 
-| Name | Description |
-|------|-------------|
-| Global Commercial Insurance | Property casualty, financial lines, specialty, and other commercial insurance in 200+ countries. |
-| Cyber Insurance | Cyber risk solutions protecting organizations from data breaches, ransomware, and cyber liability. |
-| Professional Liability | Directors and Officers (D&O), Errors and Omissions (E&O), and employment practices liability. |
-| Multinational Insurance Programs | Coordinated global insurance programs for multinational corporations with local and global coverage. |
-| Claims Management | Global claims expertise with IntelliRisk Advanced platform for self-administered claims programs. |
-| myAIG Digital Portal | Broker portal providing online access to policy information, endorsements, and certificates. |
-| Private Client Group | High-value personal insurance for homes, autos, collections, and liability for wealthy individuals. |
-| Travel Insurance | Travel protection plans for trip cancellation, medical emergencies, and travel-related risks. |
+**Agent readiness 20.5** — agent-aware
 
-## Use Cases
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Enterprise Risk Management | Comprehensive risk transfer solutions for large corporations across property, liability, and specialty lines. |
-| Cyber Risk Transfer | Protect businesses from financial losses due to cyber incidents, data breaches, and regulatory fines. |
-| Multinational Program Administration | Coordinate insurance coverage for global operations with consistent terms across jurisdictions. |
-| Financial Institution Risk | Bankers blanket bond, fidelity, professional liability, and other coverages for financial institutions. |
-| Construction and Infrastructure | Contractor liability, builders risk, and environmental coverages for construction projects. |
+**Regulatory alignment 42.1** — Insurance
 
-## Integrations
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aig/](https://apis.io/providers/aig/).
 
-| Name | Description |
-|------|-------------|
-| Broker Management Systems | Integration with broker platforms for quoting, binding, and policy management via myAIG portal. |
-| Risk Management Information Systems | Data feeds and integrations with RMIS platforms for risk data management. |
-| Anthropic AI | Partnership with Anthropic to implement AI for insurance operations and underwriting enhancement. |
-| ERP Integration | Enterprise resource planning integration for certificate management and compliance tracking. |
+## How this profile is made
 
-## Artifacts
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-Machine-readable schema specifications organized by format.
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AIG: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [aig-cyber-risk-profile-schema.json](json-schema/aig-cyber-risk-profile-schema.json)
-- [aig-insurance-claim-schema.json](json-schema/aig-insurance-claim-schema.json)
-- [aig-insurance-policy-schema.json](json-schema/aig-insurance-policy-schema.json)
-- [aig-risk-profile-schema.json](json-schema/aig-risk-profile-schema.json)
-
-### JSON Structure
-
-- [aig-cyber-risk-profile-structure.json](json-structure/aig-cyber-risk-profile-structure.json)
-- [aig-insurance-claim-structure.json](json-structure/aig-insurance-claim-structure.json)
-- [aig-insurance-policy-structure.json](json-structure/aig-insurance-policy-structure.json)
-- [aig-risk-profile-structure.json](json-structure/aig-risk-profile-structure.json)
-
-### JSON-LD
-
-- [aig-context.jsonld](json-ld/aig-context.jsonld)
-
-### Examples
-
-- [aig-cyber-risk-profile-example.json](examples/aig-cyber-risk-profile-example.json)
-- [aig-insurance-claim-example.json](examples/aig-insurance-claim-example.json)
-- [aig-insurance-policy-example.json](examples/aig-insurance-policy-example.json)
-- [aig-risk-profile-example.json](examples/aig-risk-profile-example.json)
-
-## Vocabulary
-
-- [AIG Vocabulary](vocabulary/aig-vocabulary.yaml) — Taxonomy mapping 4 resources, 5 actions, and 3 personas across insurance policy, claims, and risk profile domains
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aig/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
