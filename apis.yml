@@ -251,6 +251,16 @@ common:
       description: Enterprise resource planning integration for certificate management and compliance tracking.
     - name: Okta
       description: AIG's customer identity platform; auth1.customerpltfm.aig.com issues the OAuth 2.0 / OpenID Connect tokens that the commercial API gateway requires.
+  - type: UsageTerms
+    url: terms/aig-terms-of-service.yml
+  - type: DataProcessing
+    url: privacy/aig-privacy-policy.yml
+  - type: Eligibility
+    url: eligibility/aig-eligibility.yml
+  - type: AIPreferences
+    url: ai-preferences/aig-ai-preferences.yml
+  - type: DataLicense
+    url: data-license/aig-data-license.yml
 x-enrichment:
   date: '2026-08-30'
   status: enriched
